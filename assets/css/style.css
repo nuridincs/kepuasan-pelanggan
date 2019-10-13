@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	background-color: #108A93;
+}
+
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(../fonts/lato.woff2) format('woff2'), url(../fonts/lato.woff) format('woff');
+}
+
+.container-page{
+	font-family: 'Lato', sans-serif;
+}
+
+table.table-kuisioner > tbody> tr > td{
+	padding: 5px 10px;
+	font-size: small;
+}
