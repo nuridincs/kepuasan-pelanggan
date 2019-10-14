@@ -17,8 +17,8 @@
 			<label class="control-label col-sm-3">Jenis Kelamin*</label>
 			<div class="col-sm-9">
 				<div class="radio">
-					<label><input type="radio" name="jenkel" value="0" <?php echo set_radio('jenkel', '0', TRUE); ?> required> Laki-Laki</label>
-					<label><input type="radio" name="jenkel" value="1" <?php echo set_radio('jenkel', '1'); ?> required> Perempuan</label>
+					<label><input type="radio" name="jenkel" value="Laki-Laki" <?php echo set_radio('jenkel', '0', TRUE); ?> required> Laki-Laki</label>
+					<label><input type="radio" name="jenkel" value="Perempuan" <?php echo set_radio('jenkel', '1'); ?> required> Perempuan</label>
 				</div>
 			</div>
 		</div>
@@ -41,11 +41,11 @@
 			<div class="col-sm-9">
 				<select name="pekerjaan" class="form-control">
 					<option value="" selected>-- Pilih Pekerjaan --</option>
-					<option value="1" <?php echo set_select('pekerjaan', 'Pegawai Negeri', FALSE)?>>Pegawai Negeri</option>
-					<option value="2" <?php echo set_select('pekerjaan', 'Wiraswasta', FALSE)?>>Wiraswasta</option>
-					<option value="3" <?php echo set_select('pekerjaan', 'Mahasiswa/i', FALSE)?>>Mahasiswa</option>
-					<option value="4" <?php echo set_select('pekerjaan', 'pelajar', FALSE)?>>Pelajar</option>
-					<option value="5" <?php echo set_select('pekerjaan', 'Lainnya', FALSE)?>>Lainnya</option>
+					<option value="Pegawai Negeri" <?php echo set_select('pekerjaan', 'Pegawai Negeri', FALSE)?>>Pegawai Negeri</option>
+					<option value="Wiraswasta" <?php echo set_select('pekerjaan', 'Wiraswasta', FALSE)?>>Wiraswasta</option>
+					<option value="Mahasiswa/i" <?php echo set_select('pekerjaan', 'Mahasiswa/i', FALSE)?>>Mahasiswa</option>
+					<option value="pelajar" <?php echo set_select('pekerjaan', 'pelajar', FALSE)?>>Pelajar</option>
+					<option value="Lainnya" <?php echo set_select('pekerjaan', 'Lainnya', FALSE)?>>Lainnya</option>
 				</select>
 			</div>
 		</div>
@@ -54,9 +54,9 @@
 			<div class="col-sm-9">
 				<select name="frekuensi" class="form-control">
 					<option value="" selected>-- Pilih frekuensi --</option>
-					<option value="1" <?php echo set_select('frekuensi', 'Pertama Kali', FALSE)?>>Pertama Kali</option>
-					<option value="2" <?php echo set_select('frekuensi', 'Dua Kali', FALSE)?>>Dua Kali</option>
-					<option value="3" <?php echo set_select('frekuensi', 'Lebih dari dua kali', FALSE)?>>Lebih dari dua kali</option>
+					<option value="Pertama Kali" <?php echo set_select('frekuensi', 'Pertama Kali', FALSE)?>>Pertama Kali</option>
+					<option value="Dua Kali" <?php echo set_select('frekuensi', 'Dua Kali', FALSE)?>>Dua Kali</option>
+					<option value="Lebih dari dua kali" <?php echo set_select('frekuensi', 'Lebih dari dua kali', FALSE)?>>Lebih dari dua kali</option>
 				</select>
 			</div>
 		</div>

@@ -161,7 +161,12 @@ class Administrasi extends CI_Controller{
     }
 
     public function hasilKuisioner() {
+        $data['data']['kenyataan'] = $this->MKuisioner->getData('kenyataan');
+        $data['data']['harapan'] = $this->MKuisioner->getData('harapan');
         $data['content'] = 'content/hasilKuisioner';
+
+        // $this->load->view("layout/sidebar", $data);
+        // $data['content'] = 'content/hasilKuisioner';
         $this->load->view("layout/sidebar", $data);
     }
 

@@ -214,9 +214,69 @@ class MKuisioner extends CI_Model{
 			$sql = "select * from tbl_var_jaminan";
 		} elseif ($type === 'var_bukti_fisik') {
 			$sql = "select * from tbl_var_bukti_fisik";
+		} elseif ($type === 'kenyataan') {
+			$sql = "select * from tbl_kuisioner_kenyataan";
+		} elseif ($type === 'harapan') {
+			$sql = "select * from tbl_kuisioner_harapan";
 		}
 
 		$sql = $this->db->query($sql);
 		return $sql->result();
+	}
+
+	public function execute($action, $type, $data, $id="") {
+		if ($action === 'insert') {
+			if ($type === 'skala') {
+				// echo "<pre>";
+				// print_r($data);die;
+				$dataCustomer = array(
+					'nama' => $data['nama'],
+					'umur' => $data['umur'],
+					'jk' => $data['jenkel'],
+					'frekuensi' => $data['frekuensi'],
+					'pekerjaan' => $data['pekerjaan'],
+				);	
+
+				$this->db->insert('tbl_customer', $dataCustomer);
+				$customer_id = $this->db->insert_id();	
+
+				$this->execute('insert', 'kenyataan', $data, $customer_id);
+				$this->execute('insert', 'harapan', $data, $customer_id);
+			} elseif ($type === 'kenyataan') {
+				$p = [];
+				$p['id_responden'] = $id;
+				for ($i=1; $i <= 24 ; $i++) { 
+					$pp = "p$i";
+					$pk = "kenyataan$i";
+					$p[$pp]= $data[$pk];
+				}
+
+				$dataKenyataan = $p;
+
+				$this->db->insert('tbl_kuisioner_kenyataan', $dataKenyataan);
+			} elseif ($type === 'harapan') {
+				$p = [];
+				$p['id_responden'] = $id;
+				$no=0;
+				for ($i=112; $i <= 124 ; $i++) { 
+					$no++;
+					$pp = "p$no";
+					$pk = "harapan$i";
+					$p[$pp]= $data[$pk];
+				}
+
+				$dataHarapan = $p;
+
+				$this->db->insert('tbl_kuisioner_harapan', $dataHarapan);
+			}
+
+		}
+		// $this->db->insert('tbl_kuisioner', $data);
+		
+		// if($this->db->affected_rows() != 0){
+		// 	return null;
+		// } else{
+		// 	return "Data gagal ditambahkan : ".$this->db->error;
+		// }
 	}
 }

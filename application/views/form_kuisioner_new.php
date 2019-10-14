@@ -12,7 +12,7 @@
 				Setiap soal terdapat 2 jawaban kenyataan dan harapan, pilih salau satu pada jawaban yang Saudara pilih
 			</div>
 			<br><br>
-			<form method="POST" action="<?php echo base_url("form");?>" role="form">
+			<form method="POST" action="<?php echo base_url("Kuisioner/formSubmit");?>" role="form">
 				<div class="col-md-12">	
 					<input type="hidden" name="nama" value="<?php echo (!empty($dataResponden['responden']['nama']))?$dataResponden['responden']['nama']:set_value('nama') ?>">
 					<input type="hidden" name="umur" value="<?php echo (!empty($dataResponden['responden']['umur']))?$dataResponden['responden']['umur']:set_value('umur') ?>">
@@ -42,10 +42,10 @@
 					?>
 					<div class="row">
 						<div class="col-md-6">
-							<label><input type="radio" name="pernyataan<?= $value['pernyataan']['id_pernyataan'] ?>" value="<?= $dataPernyataan[1] ?>" <?php echo set_radio('pernyataan', '<?= $dataPernyataan[1] ?>'); ?> required> <?= $dataPernyataan[0] ?></label> <br><br>
+							<label><input type="radio" name="kenyataan<?= $value['pernyataan']['id_pernyataan'] ?>" value="<?= $dataPernyataan[1] ?>" <?php echo set_radio('pernyataan', '<?= $dataPernyataan[1] ?>'); ?> required> <?= $dataPernyataan[0] ?></label> <br><br>
 						</div>
 						<div class="col-md-6">
-							<label><input type="radio" name="pernyataan<?= $value['pernyataan']['id_skala'] ?>" value="<?= $dataPernyataan[1] ?>" <?php echo set_radio('pernyataan', '<?= $dataPernyataan[1] ?>'); ?> required> <?= $dataPernyataan[0] ?></label> <br><br>
+							<label><input type="radio" name="harapan<?= $value['pernyataan']['id_skala'] ?>" value="<?= $dataPernyataan[1] ?>" <?php echo set_radio('pernyataan', '<?= $dataPernyataan[1] ?>'); ?> required> <?= $dataPernyataan[0] ?></label> <br><br>
 						</div>
 					</div>
 					<?php

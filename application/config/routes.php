@@ -56,3 +56,4 @@ $route['form'] = 'Kuisioner/form';
 $route['form-kuisioner'] = 'Kuisioner/formKuisioner';
 $route['login'] = 'Autentikasi';
 $route['sukses'] = 'Kuisioner/sukses_form';
+$route['manage'] = 'Administrasi/home';

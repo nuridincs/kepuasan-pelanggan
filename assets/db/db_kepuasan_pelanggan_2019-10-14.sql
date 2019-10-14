@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.27)
 # Database: db_kepuasan_pelanggan
-# Generation Time: 2019-10-13 16:21:30 +0000
+# Generation Time: 2019-10-14 00:36:21 +0000
 # ************************************************************
 
 
@@ -68,7 +68,8 @@ LOCK TABLES `tbl_customer` WRITE;
 INSERT INTO `tbl_customer` (`id`, `nama`, `umur`, `jk`, `pekerjaan`, `frekuensi`)
 VALUES
 	(1,'ncs',23,'laki - laki','Pelajar','1 kali'),
-	(2,'dwi',25,'perempuan','mahasiswa','1 kali');
+	(2,'dwi',25,'perempuan','mahasiswa','1 kali'),
+	(8,'eva',35,'Perempuan','Lainnya','Pertama Kali');
 
 /*!40000 ALTER TABLE `tbl_customer` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -116,8 +117,9 @@ LOCK TABLES `tbl_kuisioner_harapan` WRITE;
 
 INSERT INTO `tbl_kuisioner_harapan` (`id`, `id_responden`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`, `p7`, `p8`, `p9`, `p10`, `p11`, `p12`, `p13`, `p14`, `p15`, `p16`, `p17`, `p18`, `p19`, `p20`, `p21`, `p22`, `p23`, `p24`)
 VALUES
-	(3,1,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4),
-	(4,2,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4);
+	(3,1,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5),
+	(4,2,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4),
+	(6,8,1,1,1,1,1,1,1,1,1,1,1,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `tbl_kuisioner_harapan` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -166,7 +168,8 @@ LOCK TABLES `tbl_kuisioner_kenyataan` WRITE;
 INSERT INTO `tbl_kuisioner_kenyataan` (`id`, `id_responden`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`, `p7`, `p8`, `p9`, `p10`, `p11`, `p12`, `p13`, `p14`, `p15`, `p16`, `p17`, `p18`, `p19`, `p20`, `p21`, `p22`, `p23`, `p24`)
 VALUES
 	(1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5),
-	(2,2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5);
+	(2,2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5),
+	(9,8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
 
 /*!40000 ALTER TABLE `tbl_kuisioner_kenyataan` ENABLE KEYS */;
 UNLOCK TABLES;

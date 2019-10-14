@@ -40,6 +40,28 @@ class Kuisioner extends CI_Controller{
 			$this->formKuisioner($data);
 		}
 	}
+
+	public function formSubmit() {
+		$responden = $this->input->post();
+
+				
+		if(empty($responden)){
+			header("Location:".base_url(""));
+		}else{
+			$data['responden'] = $responden;
+			$data['pageTitle'] = "PT MAKANAN UTAMA MANAJEMEN | Kuisioner Kepuasan Pelanggan";
+			
+		// echo "<pre>";
+		// print_r($responden);die;
+			// if ($this->form_validation->run() == FALSE){
+				
+			// }else{
+				$data['success'] = $this->MKuisioner->execute('insert', 'skala', $responden);
+				if(empty($data['success']))
+					header("Location:".base_url("kuisioner/sukses_page"));
+			// }
+		}
+	}
 	
 	public function sukses_page(){
 		$data['pageTitle'] = "PT MAKANAN UTAMA MANAJEMEN | Kuisioner Kepuasan Pelanggan";
