@@ -58,8 +58,6 @@ class MKuisioner extends CI_Model{
 				'kewajaranBiaya' => $kewajaranBiaya, 'kepastianBiaya' => $kepastianBiaya, 'kepastianJadwal' => $kepastianJadwal,
 				'kenyamanan' => $kenyamanan, 'keamanan' => $keamanan, 'waktu_pengisian' => $waktu_pengisian
 		);
-		// echo "<pre>";
-		// print_r($data);die;
 		
 		$this->db->insert('tbl_kuisioner', $data);
 		
@@ -227,8 +225,6 @@ class MKuisioner extends CI_Model{
 	public function execute($action, $type, $data, $id="") {
 		if ($action === 'insert') {
 			if ($type === 'skala') {
-				// echo "<pre>";
-				// print_r($data);die;
 				$dataCustomer = array(
 					'nama' => $data['nama'],
 					'umur' => $data['umur'],
@@ -258,7 +254,7 @@ class MKuisioner extends CI_Model{
 				$p = [];
 				$p['id_responden'] = $id;
 				$no=0;
-				for ($i=112; $i <= 124 ; $i++) { 
+				for ($i=112; $i <= 135 ; $i++) { 
 					$no++;
 					$pp = "p$no";
 					$pk = "harapan$i";
@@ -266,6 +262,9 @@ class MKuisioner extends CI_Model{
 				}
 
 				$dataHarapan = $p;
+
+				// echo "<pre>";
+				// print_r($dataHarapan);die;
 
 				$this->db->insert('tbl_kuisioner_harapan', $dataHarapan);
 			}
