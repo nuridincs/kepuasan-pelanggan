@@ -216,6 +216,10 @@ class MKuisioner extends CI_Model{
 			$sql = "select * from tbl_kuisioner_kenyataan";
 		} elseif ($type === 'harapan') {
 			$sql = "select * from tbl_kuisioner_harapan";
+		} elseif ($type === 'customer') {
+			$sql = "select * from tbl_customer";
+		} elseif ($type === 'user') {
+			$sql = "select * from tbl_user";
 		}
 
 		$sql = $this->db->query($sql);

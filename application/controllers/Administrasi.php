@@ -152,11 +152,13 @@ class Administrasi extends CI_Controller{
 
     public function kelolaCustomer() {
         $data['content'] = 'content/kelola/customer';
+        $data['data'] = $this->MKuisioner->getData('customer');
         $this->load->view("layout/sidebar", $data);
     }
 
     public function kelolaUser() {
         $data['content'] = 'content/kelola/user';
+        $data['data'] = $this->MKuisioner->getData('user');
         $this->load->view("layout/sidebar", $data);
     }
 
@@ -172,6 +174,8 @@ class Administrasi extends CI_Controller{
 
     public function laporan() {
         $data['content'] = 'content/laporan';
+        $data['data']['kenyataan'] = $this->MKuisioner->getData('kenyataan');
+        $data['data']['harapan'] = $this->MKuisioner->getData('harapan');
         $this->load->view("layout/sidebar", $data);
     }
 	
