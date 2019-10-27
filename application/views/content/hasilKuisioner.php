@@ -7,7 +7,7 @@
 		    <?php 
 		    	for ($i=1; $i <= 24; $i++) { 
 		    ?>
-		    <th>p<?= $i ?></th>
+		    <th>P<?= $i ?></th>
 		    <?php
 		    	} 
 		    ?>
@@ -18,6 +18,8 @@
 			<?php
 				$no=0;
 				$meanKenyataan = 0;
+				$meanKenyataanArr = [];
+				$arrKenyataan = [];
 				foreach ($kenyataan as $value) {
 					$no++;
 
@@ -25,6 +27,8 @@
 						$p = "p".$ii;
 						$pCombine = $value->$p;
 						$meanKenyataan += $pCombine;
+						$meanKenyataan += $pCombine;
+						$meanKenyataanArr[] = $pCombine;
 					}
 			?>
 			  <tr>
@@ -55,9 +59,16 @@
 			    <td><?= $value->p24 ?></td>
 			    <td>
 			    	<?php 
-			    		$sumMeanKenyataan = $meanKenyataan / 24;
+
+				    	// echo "<pre>";
+				    	// print_r($meanKenyataanArr);die;
+			    		$avg = array_sum($meanKenyataanArr)/count($meanKenyataanArr);
+			    		$arrKenyataan[] = $avg;
+			    		echo number_format($avg,2);
+			    		// $sumMeanKenyataan = $meanKenyataan / 24;
 			    		// echo $meanKenyataan." ";
-			    		echo $sumMeanKenyataan;
+			    		// echo $meanKenyataan/$no;
+			    		// echo $sumMeanKenyataan;
 			    	?>
 			    </td>
 			  </tr>
@@ -75,7 +86,7 @@
 		    <?php 
 		    	for ($i=1; $i <= 24; $i++) { 
 		    ?>
-		    <th>p<?= $i ?></th>
+		    <th>P<?= $i ?></th>
 		    <?php
 		    	} 
 		    ?>
@@ -86,12 +97,15 @@
 			<?php
 				$no = 0;
 				$mean = 0;
+				$meanHarapanArr = [];
+				$arrHarapan = [];
 				foreach ($harapan as $value) {
 					$no++;
 					for ($ii=1; $ii <= 24 ; $ii++) { 
 						$p = "p".$ii;
 						$pCombine = $value->$p;
 						$mean += $pCombine;
+						$meanHarapanArr[] = $pCombine;
 					}
 			?>
 			  <tr>
@@ -122,14 +136,58 @@
 			    <td><?= $value->p24 ?></td>
 			    <td>
 			    	<?php 
-			    		$sumMean = $mean / 24;
-			    		echo $sumMean 
+			    		// $sumMean = $mean / 24;
+			    		// echo $sumMean 
+
+			    		$avgHarapan = array_sum($meanHarapanArr)/count($meanHarapanArr);
+			    		$arrHarapan[] = $avgHarapan;
+			    		echo number_format($avgHarapan, 2);
 			    	?>
 			    </td>
 			  </tr>
 			<?php
 				}
 			?>
+		</tbody>
+	</table>
+
+
+	<h4>GAP</h4>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Harapan</th>
+				<th>Kenyataan</th>
+				<th>GAP</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php 
+				$gap = array(
+					'data' => array(
+						'0' => $arrKenyataan,
+						'1'	=> $arrHarapan
+					)
+				);
+
+				$combineArr = array();
+				for ($i=0; $i < count($gap['data']) ; $i++) { 
+					for ($ii=0; $ii < count($gap['data'][$i]); $ii++) { 
+						if ($ii == $ii) {
+							$combineArr[$ii][] = $gap['data'][$i][$ii];
+						}
+					}
+				}
+			?>
+			<?php 
+				foreach ($combineArr as $value) {
+			?>
+			<tr>
+				<td><?= number_format($value[0], 2) ?></td>
+				<td><?= number_format($value[1], 2) ?></td>
+				<td><?= number_format(($value[1] - $value[0]), 2) ?></td>
+			</tr>
+			<?php } ?>
 		</tbody>
 	</table>
 </div>

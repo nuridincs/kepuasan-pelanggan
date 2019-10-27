@@ -20,8 +20,8 @@
         <div class="wrapper">
             <!-- Sidebar Holder -->
             <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>SPK</h3>
+                <div class="sidebar-header" >
+                    <h4 align="center"><span>SPK</span> <br> Kepuasan Pelanggan</h4>
                 </div>
 
                 <ul class="list-unstyled components">
