@@ -11,7 +11,6 @@
 		    <?php
 		    	} 
 		    ?>
-		    <th>Mean</th>
 		  </tr>
 		</thead>
 		<tbody>
@@ -27,8 +26,7 @@
 						$p = "p".$ii;
 						$pCombine = $value->$p;
 						$meanKenyataan += $pCombine;
-						$meanKenyataan += $pCombine;
-						$meanKenyataanArr[] = $pCombine;
+						$meanKenyataanArr[$ii][] = $pCombine;
 					}
 			?>
 			  <tr>
@@ -57,24 +55,20 @@
 			    <td><?= $value->p22 ?></td>
 			    <td><?= $value->p23 ?></td>
 			    <td><?= $value->p24 ?></td>
-			    <td>
-			    	<?php 
-
-				    	// echo "<pre>";
-				    	// print_r($meanKenyataanArr);die;
-			    		$avg = array_sum($meanKenyataanArr)/count($meanKenyataanArr);
-			    		$arrKenyataan[] = $avg;
-			    		echo number_format($avg,2);
-			    		// $sumMeanKenyataan = $meanKenyataan / 24;
-			    		// echo $meanKenyataan." ";
-			    		// echo $meanKenyataan/$no;
-			    		// echo $sumMeanKenyataan;
-			    	?>
-			    </td>
 			  </tr>
 			<?php
 				}
 			?>
+			<tr class="mean">
+				<td>Mean</td>
+			<?php 
+				for ($k=1; $k <= count($meanKenyataanArr); $k++) { 
+					$meanKenyataan = array_sum($meanKenyataanArr[$k])/count($meanKenyataanArr[$k]);
+					$arrKenyataan[] = $meanKenyataan;
+			?>
+				<td><?= number_format($meanKenyataan, 2) ?></td>
+			<?php } ?>
+			</tr>
 		</tbody>
 	</table>
 
@@ -90,7 +84,6 @@
 		    <?php
 		    	} 
 		    ?>
-		    <th>Mean</th>
 		  </tr>
 		</thead>
 		<tbody>
@@ -105,7 +98,7 @@
 						$p = "p".$ii;
 						$pCombine = $value->$p;
 						$mean += $pCombine;
-						$meanHarapanArr[] = $pCombine;
+						$meanHarapanArr[$ii][] = $pCombine;
 					}
 			?>
 			  <tr>
@@ -134,20 +127,20 @@
 			    <td><?= $value->p22 ?></td>
 			    <td><?= $value->p23 ?></td>
 			    <td><?= $value->p24 ?></td>
-			    <td>
-			    	<?php 
-			    		// $sumMean = $mean / 24;
-			    		// echo $sumMean 
-
-			    		$avgHarapan = array_sum($meanHarapanArr)/count($meanHarapanArr);
-			    		$arrHarapan[] = $avgHarapan;
-			    		echo number_format($avgHarapan, 2);
-			    	?>
-			    </td>
 			  </tr>
 			<?php
 				}
 			?>
+			<tr class="mean">
+				<td>Mean</td>
+			<?php 
+				for ($h=1; $h <= count($meanHarapanArr); $h++) { 
+					$meanHarapan = array_sum($meanHarapanArr[$h])/count($meanHarapanArr[$h]);
+					$arrHarapan[] = $meanHarapan;
+			?>
+				<td><?= number_format($meanHarapan, 2) ?></td>
+			<?php } ?>
+			</tr>
 		</tbody>
 	</table>
 
@@ -188,6 +181,195 @@
 				<td><?= number_format(($value[1] - $value[0]), 2) ?></td>
 			</tr>
 			<?php } ?>
+		</tbody>
+	</table>
+
+	<h4>Dimensi GAP</h4>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Dimensi</th>
+				<th>Harapan</th>
+				<th>Kinerja</th>
+				<th>GAP</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+				$no = 0;
+				$sumH = 0;
+				$sumK = 0;
+				for ($dg=1; $dg <= 4 ; $dg++) { 
+					$no++;
+					$sumH += $combineArr[$dg][0];
+					$sumK += $combineArr[$dg][1];
+			?>
+			<tr>
+				<td><?= $no ?></td>
+				<td>Realibility</td>
+				<td><?= number_format($combineArr[$dg][0], 2) ?></td>
+				<td><?= number_format($combineArr[$dg][1], 2) ?></td>
+				<td><?= number_format($combineArr[$dg][1] - $combineArr[$dg][0], 2) ?></td>
+			</tr>
+		<?php } ?>
+			<tr class="mean">
+				<td colspan="2">Mean</td>
+				<td><?= number_format(($sumH/4), 2) ?></td>
+				<td><?= number_format(($sumK/4), 2) ?></td>
+				<td><?= number_format(($sumK/4) - ($sumH/4), 2) ?></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Dimensi</th>
+				<th>Harapan</th>
+				<th>Kinerja</th>
+				<th>GAP</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php 
+				// echo "<pre>";
+				// print_r($combineArr);
+				// die;
+				$no = 0;
+				$sumH = 0;
+				$sumK = 0;
+				for ($dg=5; $dg <= 8 ; $dg++) { 
+					$no++;
+					$sumH += $combineArr[$dg][0];
+					$sumK += $combineArr[$dg][1];
+			?>
+			<tr>
+				<td><?= $no ?></td>
+				<td>Responsiveness</td>
+				<td><?= number_format($combineArr[$dg][0], 2) ?></td>
+				<td><?= number_format($combineArr[$dg][1], 2) ?></td>
+				<td><?= number_format($combineArr[$dg][1] - $combineArr[$dg][0], 2) ?></td>
+			</tr>
+		<?php } ?>
+			<tr class="mean">
+				<td colspan="2">Mean</td>
+				<td><?= number_format(($sumH/4), 2) ?></td>
+				<td><?= number_format(($sumK/4), 2) ?></td>
+				<td><?= number_format(($sumK/4) - ($sumH/4), 2) ?></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Dimensi</th>
+				<th>Harapan</th>
+				<th>Kinerja</th>
+				<th>GAP</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+				$no = 0;
+				$sumH = 0;
+				$sumK = 0;
+				for ($dg=9; $dg <= 13 ; $dg++) { 
+					$no++;
+					$sumH += $combineArr[$dg][0];
+					$sumK += $combineArr[$dg][1];
+			?>
+			<tr>
+				<td><?= $no ?></td>
+				<td>Assurance</td>
+				<td><?= number_format($combineArr[$dg][0], 2) ?></td>
+				<td><?= number_format($combineArr[$dg][1], 2) ?></td>
+				<td><?= number_format($combineArr[$dg][1] - $combineArr[$dg][0], 2) ?></td>
+			</tr>
+		<?php } ?>
+			<tr class="mean">
+				<td colspan="2">Mean</td>
+				<td><?= number_format(($sumH/5), 2) ?></td>
+				<td><?= number_format(($sumK/5), 2) ?></td>
+				<td><?= number_format(($sumK/5) - ($sumH/5), 2) ?></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Dimensi</th>
+				<th>Harapan</th>
+				<th>Kinerja</th>
+				<th>GAP</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php 
+				$no = 0;
+				$sumH = 0;
+				$sumK = 0;
+				for ($dg=14; $dg <= 17 ; $dg++) { 
+					$no++;
+					$sumH += $combineArr[$dg][0];
+					$sumK += $combineArr[$dg][1];
+			?>
+			<tr>
+				<td><?= $no ?></td>
+				<td>Empathy</td>
+				<td><?= number_format($combineArr[$dg][0], 2) ?></td>
+				<td><?= number_format($combineArr[$dg][1], 2) ?></td>
+				<td><?= number_format($combineArr[$dg][1] - $combineArr[$dg][0], 2) ?></td>
+			</tr>
+		<?php } ?>
+			<tr class="mean">
+				<td colspan="2">Mean</td>
+				<td><?= number_format(($sumH/4), 2) ?></td>
+				<td><?= number_format(($sumK/4), 2) ?></td>
+				<td><?= number_format(($sumK/4) - ($sumH/4), 2) ?></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Dimensi</th>
+				<th>Harapan</th>
+				<th>Kinerja</th>
+				<th>GAP</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php 
+				$no = 0;
+				$sumH = 0;
+				$sumK = 0;
+				for ($dg=18; $dg <= 23 ; $dg++) { 
+					$no++;
+					$sumH += $combineArr[$dg][0];
+					$sumK += $combineArr[$dg][1];
+			?>
+			<tr>
+				<td><?= $no ?></td>
+				<td>Tangibles</td>
+				<td><?= number_format($combineArr[$dg][0], 2) ?></td>
+				<td><?= number_format($combineArr[$dg][1], 2) ?></td>
+				<td><?= number_format($combineArr[$dg][1] - $combineArr[$dg][0], 2) ?></td>
+			</tr>
+		<?php } ?>
+			<tr class="mean">
+				<td colspan="2">Mean</td>
+				<td><?= number_format(($sumH/7), 2) ?></td>
+				<td><?= number_format(($sumK/7), 2) ?></td>
+				<td><?= number_format(($sumK/7) - ($sumH/7), 2) ?></td>
+			</tr>
 		</tbody>
 	</table>
 </div>

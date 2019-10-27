@@ -166,3 +166,8 @@ a.article, a.article:hover {
         display: none;
     }
 }
+
+.mean{
+    font-weight: bold;
+    color: red;
+}
