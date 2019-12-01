@@ -50,16 +50,10 @@ class Kuisioner extends CI_Controller{
 		}else{
 			$data['responden'] = $responden;
 			$data['pageTitle'] = "PT MAKANAN UTAMA MANAJEMEN | Kuisioner Kepuasan Pelanggan";
-			
-		// echo "<pre>";
-		// print_r($responden);die;
-			// if ($this->form_validation->run() == FALSE){
-				
-			// }else{
-				$data['success'] = $this->MKuisioner->execute('insert', 'skala', $responden);
-				if(empty($data['success']))
-					header("Location:".base_url("kuisioner/sukses_page"));
-			// }
+	
+			$data['success'] = $this->MKuisioner->execute('insert', 'skala', $responden);
+			if(empty($data['success']))
+				header("Location:".base_url("kuisioner/sukses_page"));
 		}
 	}
 	
@@ -95,9 +89,6 @@ class Kuisioner extends CI_Controller{
 
 		$dataTmp['dataKuisioner'] = $dataKuisioner;
 		$dataTmp['dataResponden'] = $dataResponden;
-		// echo "<pre>";
-		// print_r($dataTmp);
-		// die;
 		$this->load->template("form_kuisioner_new", $dataTmp);
 	}
 }

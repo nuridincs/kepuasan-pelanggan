@@ -25,7 +25,9 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <p align="center"><i class="glyphicon glyphicon-user"></i> Admin</p>
+                    <p align="center"><i class="glyphicon glyphicon-user"></i> 
+                        <?php echo ($this->session->userdata('adminName')); ?>
+                    </p>
                     <hr>
                     <!-- <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
@@ -63,7 +65,7 @@
                         <a href="<?= base_url('administrasi/laporan') ?>"><i class="glyphicon glyphicon-file"></i> Laporan</a>
                     </li>
                     <li>
-                        <a href="#"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+                        <a href="<?= base_url('autentikasi/logout') ?>"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
                     </li>
                 </ul>
             </nav>

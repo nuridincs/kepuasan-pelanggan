@@ -183,7 +183,7 @@ class MKuisioner extends CI_Model{
 		return $result;
 	}
 
-	public function getData($type) {
+	public function getData($type="", $id="", $tbl="") {
 		if($type === 'kuisioner') {
 			$sql = "select *
 					from tbl_var_kehandalan
@@ -220,13 +220,15 @@ class MKuisioner extends CI_Model{
 			$sql = "select * from tbl_customer";
 		} elseif ($type === 'user') {
 			$sql = "select * from tbl_user";
+		} elseif ($type === 'dtlKuisioner') {
+			$sql = "select * from $tbl where id=$id";
 		}
 
 		$sql = $this->db->query($sql);
 		return $sql->result();
 	}
 
-	public function execute($action, $type, $data, $id="") {
+	public function execute($action, $type, $data, $id="", $tbl="") {
 		if ($action === 'insert') {
 			if ($type === 'skala') {
 				$dataCustomer = array(
@@ -267,19 +269,15 @@ class MKuisioner extends CI_Model{
 
 				$dataHarapan = $p;
 
-				// echo "<pre>";
-				// print_r($dataHarapan);die;
-
 				$this->db->insert('tbl_kuisioner_harapan', $dataHarapan);
+			} elseif ($type === 'variabel') {
+				$this->db->insert($tbl, array('pertanyaan' => $data));
 			}
-
+		} elseif ($action === 'update') {
+			if ($type === 'variabel') {
+				$this->db->where('id', $id);
+				$this->db->update($tbl, array('pertanyaan' => $data));
+			}
 		}
-		// $this->db->insert('tbl_kuisioner', $data);
-		
-		// if($this->db->affected_rows() != 0){
-		// 	return null;
-		// } else{
-		// 	return "Data gagal ditambahkan : ".$this->db->error;
-		// }
 	}
 }
