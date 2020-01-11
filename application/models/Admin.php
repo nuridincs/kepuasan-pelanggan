@@ -216,6 +216,12 @@ class Admin extends CI_Model{
 		
 		$this->username = $this->input->post('username');
 		$this->password = $this->input->post('password');
+		$this->captcha = $this->input->post('captcha');
+		$this->captcha_temporary = $this->input->post('captcha_temporary');
+		if ($this->captcha !== $this->captcha_temporary) {
+			return "Captcha yang Anda masukin salah.";
+			exit;
+		}
 		
 		$adminData = $this->getAdminbyUsername($this->username);
 		if ($adminData != null) {

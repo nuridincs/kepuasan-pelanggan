@@ -7,11 +7,12 @@ class Autentikasi extends CI_Controller{
 			$this->output->set_header("Location: ".site_url("/administrasi"));
 			return;
 		}
-		if($this->input->get('url') !== null)
+		if($this->input->get('url') !== null) 
 			$data['location'] = htmlspecialchars($this->input->get('url'));
-		$data['useSimple'] = true;
-		$data['pageTitle'] = "PT MAKANAN UTAMA MANAJEMEN | Halaman Login PT MAKANAN UTAMA MANAJEMEN";
-		$this->load->template_admin("form_login", $data);
+			$data['useSimple'] = true;
+			$data['pageTitle'] = "PT MAKANAN UTAMA MANAJEMEN | Halaman Login PT MAKANAN UTAMA MANAJEMEN";
+			$data['captcha'] = $this->generateRandomString(6);
+			$this->load->template_admin("form_login", $data);
 	}
 	
 	public function login(){
@@ -29,6 +30,7 @@ class Autentikasi extends CI_Controller{
 		}else{
 			$this->load->model("admin");
 			$data['errors'] = $this->admin->adminLogin();
+			$data['captcha'] = $this->generateRandomString(6);
 			if (empty($data['errors']) && $this->input->post('location') == "")
 				header("Location:".site_url("administrasi/dashboard"));
 			if (empty($data['errors']) && $this->input->post('location') != "")
@@ -92,5 +94,14 @@ class Autentikasi extends CI_Controller{
 		$this->load->model('admin');
 		$this->admin->adminLogout();
 		$this->output->set_header("Location: ".site_url("/autentikasi"));
+	}
+
+	public function generateRandomString($length = 10) {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+				$randomString .= $characters[rand(0, strlen($characters) - 1)];
+		}
+		return $randomString;
 	}
 }

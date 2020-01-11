@@ -212,7 +212,7 @@
 				<td><?= number_format($combineArr[$dg][1], 2) ?></td>
 				<td><?= number_format($combineArr[$dg][1] - $combineArr[$dg][0], 2) ?></td>
 			</tr>
-		<?php } ?>
+		<?php } $Realibility = ($sumK/4) - ($sumH/4); ?>
 			<tr class="mean">
 				<td colspan="2">Mean</td>
 				<td><?= number_format(($sumH/4), 2) ?></td>
@@ -233,10 +233,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php 
-				// echo "<pre>";
-				// print_r($combineArr);
-				// die;
+			<?php
 				$no = 0;
 				$sumH = 0;
 				$sumK = 0;
@@ -252,7 +249,7 @@
 				<td><?= number_format($combineArr[$dg][1], 2) ?></td>
 				<td><?= number_format($combineArr[$dg][1] - $combineArr[$dg][0], 2) ?></td>
 			</tr>
-		<?php } ?>
+		<?php } $Responsiveness = ($sumK/4) - ($sumH/4); ?>
 			<tr class="mean">
 				<td colspan="2">Mean</td>
 				<td><?= number_format(($sumH/4), 2) ?></td>
@@ -289,7 +286,7 @@
 				<td><?= number_format($combineArr[$dg][1], 2) ?></td>
 				<td><?= number_format($combineArr[$dg][1] - $combineArr[$dg][0], 2) ?></td>
 			</tr>
-		<?php } ?>
+		<?php } $Assurance = ($sumK/5) - ($sumH/5); ?>
 			<tr class="mean">
 				<td colspan="2">Mean</td>
 				<td><?= number_format(($sumH/5), 2) ?></td>
@@ -326,7 +323,7 @@
 				<td><?= number_format($combineArr[$dg][1], 2) ?></td>
 				<td><?= number_format($combineArr[$dg][1] - $combineArr[$dg][0], 2) ?></td>
 			</tr>
-		<?php } ?>
+		<?php } $Empathy = ($sumK/4) - ($sumH/4); ?>
 			<tr class="mean">
 				<td colspan="2">Mean</td>
 				<td><?= number_format(($sumH/4), 2) ?></td>
@@ -363,7 +360,7 @@
 				<td><?= number_format($combineArr[$dg][1], 2) ?></td>
 				<td><?= number_format($combineArr[$dg][1] - $combineArr[$dg][0], 2) ?></td>
 			</tr>
-		<?php } ?>
+		<?php } $Tangibles = ($sumK/7) - ($sumH/7); ?>
 			<tr class="mean">
 				<td colspan="2">Mean</td>
 				<td><?= number_format(($sumH/7), 2) ?></td>
@@ -372,4 +369,54 @@
 			</tr>
 		</tbody>
 	</table>
+	<div>
+		<center><h2>Diagram</h2></center>
+		<canvas id="myChart"></canvas>
+	</div>
 </div>
+	<script src="<?= base_url("/assets/js/Chart.js"); ?>"></script>
+	<script>
+		var ctx = document.getElementById("myChart").getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'pie',
+			data: {
+				labels: ["Realibility", "Responsiveness", "Assurance", "Empathy", "Tangibles"],
+				datasets: [{
+					label: 'Dimensi Gap',
+					data: [
+						<?= number_format($Realibility, 2) ?>, 
+						<?= number_format($Responsiveness, 2) ?>, 
+						<?= number_format($Assurance, 2) ?>, 
+						<?= number_format($Empathy, 2) ?>,
+						<?= number_format($Tangibles, 2) ?>
+					],
+					backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+					'rgba(255,99,132,1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true
+						}
+					}]
+				}
+			}
+		});
+	</script>

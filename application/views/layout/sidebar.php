@@ -18,8 +18,7 @@
 
 
         <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar">
+            <nav id="sidebar" class="active">
                 <div class="sidebar-header" >
                     <h4 align="center"><span>SPK</span> <br> Kepuasan Pelanggan</h4>
                 </div>
@@ -29,23 +28,6 @@
                         <?php echo ($this->session->userdata('adminName')); ?>
                     </p>
                     <hr>
-                    <!-- <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li><a href="#">Home 1</a></li>
-                            <li><a href="#">Home 2</a></li>
-                            <li><a href="#">Home 3</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
-                        </ul>
-                    </li> -->
                     <li>
                         <a href="<?= base_url('administrasi/home') ?>"><i class="glyphicon glyphicon-home"></i> Home</a>
                     </li>
@@ -79,18 +61,8 @@
                         <div class="navbar-header">
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                                 <i class="glyphicon glyphicon-align-left"></i>
-                                <!-- <span>Toggle Sidebar</span> -->
                             </button>
                         </div>
-
-                        <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
-                            </ul>
-                        </div> -->
                     </div>
                 </nav>
 
@@ -100,16 +72,18 @@
 
 
         <!-- jQuery CDN -->
-         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+        <!-- Bootstrap Js CDN -->
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+        <script src="<?= base_url("/assets/js/jquery.min.js"); ?>"></script>
+        <script src="<?= base_url("/assets/js/bootstrap.js"); ?>"></script>
 
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-         </script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+        </script>
     </body>
 </html>
