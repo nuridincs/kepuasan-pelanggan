@@ -57,6 +57,8 @@
 					<option value="Pertama Kali" <?php echo set_select('frekuensi', 'Pertama Kali', FALSE)?>>Pertama Kali</option>
 					<option value="Dua Kali" <?php echo set_select('frekuensi', 'Dua Kali', FALSE)?>>Dua Kali</option>
 					<option value="Lebih dari dua kali" <?php echo set_select('frekuensi', 'Lebih dari dua kali', FALSE)?>>Lebih dari dua kali</option>
+					<option value="Sering" <?php echo set_select('frekuensi', 'Sering', FALSE)?>>Sering</option>
+					<option value="Lebih dari lima kali" <?php echo set_select('frekuensi', 'Lebih dari lima kali', FALSE)?>>Lebih dari lima kali</option>
 				</select>
 			</div>
 		</div>
