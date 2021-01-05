@@ -6,5 +6,5 @@
 # admin login
 ```Akses halaman admin
 Url: localhost/Administrasi
-Username: Administrasi
+Username: administrator
 Password: admin123
