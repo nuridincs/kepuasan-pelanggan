@@ -41,7 +41,7 @@ LOCK TABLES `tbl_admin` WRITE;
 
 INSERT INTO `tbl_admin` (`idAdmin`, `username`, `password`, `email`, `fullname`, `lastLogin`, `lastIp`)
 VALUES
-	(1,'administrator','$2a$10$J.heQw8H7uFc0yPpBTs9C.TMh17IlQaewJWq3cCFcIEKOzYcFPsZ6','admin@gmail.com','Administrator','2019-10-13 00:26:59','127.0.0.1');
+	(1,'administrator','0192023a7bbd73250516f069df18b500','admin@gmail.com','Administrator','2019-10-13 00:26:59','127.0.0.1');
 
 /*!40000 ALTER TABLE `tbl_admin` ENABLE KEYS */;
 UNLOCK TABLES;

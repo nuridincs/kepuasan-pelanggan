@@ -213,7 +213,7 @@ class Admin extends CI_Model{
 	 * @return NULL|string
 	 */
 	public function adminLogin($updateRecord = true) {
-		
+
 		$this->username = $this->input->post('username');
 		$this->password = $this->input->post('password');
 		$this->captcha = $this->input->post('captcha');
@@ -222,16 +222,17 @@ class Admin extends CI_Model{
 			return "Captcha yang Anda masukin salah.";
 			exit;
 		}
-		
+
 		$adminData = $this->getAdminbyUsername($this->username);
 		if ($adminData != null) {
 			// if password OK
-			if ((crypt($this->password, $adminData['password'])) === $adminData['password']) {
-				$data = array('sessionEmail'=>$adminData['email'], 'adminName'=>$adminData['fullname'], 
+			// if ((crypt($this->password, $adminData['password'])) === $adminData['password']) {
+			if (md5($this->password) === $adminData['password']) {
+				$data = array('sessionEmail'=>$adminData['email'], 'adminName'=>$adminData['fullname'],
 						'id'=>$adminData['idAdmin']);
-				
+
 				$this->session->set_userdata($data);
-					
+
 				if ($updateRecord) {
 					$this->lastLogin = date("Y-m-d H:i:s");
 					$this->lastIp = $_SERVER['REMOTE_ADDR'];
@@ -242,10 +243,10 @@ class Admin extends CI_Model{
 		}
 		return "Username atau password salah. Pastikan ditulis dengan benar.";
 	}
-	
+
 	/**
 	 * Fungsi untuk admin melakukan logout. Fungsi ini akan mengakhiri sesi dari admin tersebut
-	 * 
+	 *
 	 */
 	public function adminLogout() {
 		unset($_SESSION['id']);
